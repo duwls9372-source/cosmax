@@ -27,18 +27,14 @@ st.set_page_config(
 HTML_PATH = Path(__file__).parent / "taxfit-landing.html"
 
 
-@st.cache_data
-def load_html(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
-
-
 if not HTML_PATH.exists():
     st.error(
         "taxfit-landing.html 파일을 찾을 수 없습니다. "
         "app.py와 같은 디렉토리에 taxfit-landing.html이 있는지 확인해주세요."
     )
 else:
-    html_content = load_html(HTML_PATH)
+    # 캐싱 없이 매번 새로 로드 (CSS/레이아웃 변경사항이 즉시 반영되도록)
+    html_content = HTML_PATH.read_text(encoding="utf-8")
     # Streamlit 기본 여백 제거 (전체 화면처럼 보이게)
     st.markdown(
         """
