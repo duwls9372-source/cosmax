@@ -6,6 +6,13 @@ from pathlib import Path
 # TaxFit 회계 협업 도구 - Streamlit Cloud 배포용 wrapper
 # taxfit-landing.html 은 완전히 독립적인 HTML/CSS/JS 앱이며
 # 데이터는 브라우저의 localStorage에 저장됩니다.
+#
+# 레이아웃 특징:
+# - 카드 보기: CSS container query를 사용해 카드 자신의 너비 기준으로 반응형 컬럼 조정
+#   (200px+: 2칸, 350px+: 3칸, 500px+: 4칸, 650px+: 5칸)
+# - 테이블 보기: 화면 너비 기준으로 고정 컬럼 레이아웃
+# - 긴 값(금액 등)은 text-overflow: ellipsis로 자연스럽게 줄임 처리
+#
 # 이 app.py는 해당 HTML을 components.html()로 그대로 렌더링합니다.
 # ------------------------------------------------------------
 
