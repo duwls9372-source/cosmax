@@ -1340,151 +1340,151 @@
 
     <!-- Main Form Section -->
     <div class="form-section">
-      <h2>✏️ 세금계산서 등록</h2>
-      <form id="invoiceForm">
-        <!-- 입력자 정보 -->
-        <div style="background-color: var(--color-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">👤 입력자 정보</h3>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="inputPersonTeam">팀명 <span class="required">*</span></label>
-              <select id="inputPersonTeam" required>
-                <option value="">-- 선택 --</option>
-                <option value="영업팀">영업팀</option>
-                <option value="개발팀">개발팀</option>
-                <option value="마케팅팀">마케팅팀</option>
-                <option value="운영팀">운영팀</option>
-                <option value="기획팀">기획팀</option>
-                <option value="인사팀">인사팀</option>
-                <option value="재무팀">재무팀</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputPersonDepartment">부서 <span class="required">*</span></label>
-              <select id="inputPersonDepartment" required>
-                <option value="">-- 선택 --</option>
-                <option value="영업전략부">영업전략부</option>
-                <option value="국내영업부">국내영업부</option>
-                <option value="해외영업부">해외영업부</option>
-                <option value="전략기획부">전략기획부</option>
-                <option value="개발부">개발부</option>
-                <option value="QA부">QA부</option>
-                <option value="운영부">운영부</option>
-                <option value="디지털마케팅부">디지털마케팅부</option>
-                <option value="브랜드마케팅부">브랜드마케팅부</option>
-                <option value="경영관리부">경영관리부</option>
-                <option value="기타">기타</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputPersonName">담당자명 <span class="required">*</span></label>
-              <input type="text" id="inputPersonName" placeholder="예: 김철수" required>
-            </div>
-            <div class="form-group">
-              <label for="inputPersonEmail">이메일 <span class="required">*</span></label>
-              <input type="email" id="inputPersonEmail" placeholder="example@company.com" required>
-            </div>
-            <div class="form-group">
-              <label for="inputPersonPhone">연락처</label>
-              <input type="tel" id="inputPersonPhone" placeholder="010-1234-5678">
-            </div>
-            <div class="form-group">
-              <label for="inputPersonRole">직책</label>
-              <select id="inputPersonRole">
-                <option value="">-- 선택 --</option>
-                <option value="대리">대리</option>
-                <option value="과장">과장</option>
-                <option value="팀장">팀장</option>
-                <option value="부장">부장</option>
-                <option value="직원">직원</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <h2 style="margin: 0;">✏️ 세금계산서 등록</h2>
+        <button type="button" class="btn-secondary" onclick="addRegistrationSet()" style="padding: 0.5rem 1rem; font-size: 0.875rem;">+ 등록 세트 추가</button>
+      </div>
 
-        <!-- 세금계산서 정보 (복수 등록) -->
-        <div style="margin-bottom: 1.5rem;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0;">📄 세금계산서 정보</h3>
-            <button type="button" class="btn-secondary" onclick="addInvoiceForm()" style="padding: 0.5rem 1rem; font-size: 0.875rem;">+ 세금계산서 추가</button>
-          </div>
-          <div id="invoiceFormsContainer">
-            <!-- 첫 번째 세금계산서 폼 -->
-            <div class="invoice-form-group" data-invoice-index="0">
-              <div style="background-color: var(--color-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; position: relative;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                  <span style="font-weight: 600; color: var(--color-text);">세금계산서 #1</span>
-                  <button type="button" class="btn-secondary remove-invoice-btn" onclick="removeInvoiceForm(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem; display: none;">✕ 삭제</button>
+      <form id="invoiceForm">
+        <div id="registrationSetsContainer">
+          <!-- 첫 번째 등록 세트 -->
+          <div class="registration-set" data-set-index="0" style="background-color: var(--color-bg); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--color-border); position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0;">세트 #1</h3>
+              <button type="button" class="btn-secondary remove-set-btn" onclick="removeRegistrationSet(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem; display: none;">✕ 삭제</button>
+            </div>
+
+            <!-- 입력자 정보 -->
+            <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">👤 입력자 정보</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>팀명 <span class="required">*</span></label>
+                  <select class="inputPersonTeam" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="영업팀">영업팀</option>
+                    <option value="개발팀">개발팀</option>
+                    <option value="마케팅팀">마케팅팀</option>
+                    <option value="운영팀">운영팀</option>
+                    <option value="기획팀">기획팀</option>
+                    <option value="인사팀">인사팀</option>
+                    <option value="재무팀">재무팀</option>
+                  </select>
                 </div>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label>거래유형 <span class="required">*</span></label>
-                    <select class="transactionType" required>
-                      <option value="">-- 선택 --</option>
-                      <option value="매출">매출</option>
-                      <option value="매입">매입</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>공급자명 <span class="required">*</span></label>
-                    <input type="text" class="supplierName" placeholder="예: 홍길동 용역비" required>
-                  </div>
-                  <div class="form-group">
-                    <label>품목명 <span class="required">*</span></label>
-                    <input type="text" class="itemName" placeholder="예: 용역료, 광고 제작료" required>
-                  </div>
-                  <div class="form-group">
-                    <label>사업자번호 <span class="required">*</span></label>
-                    <input type="text" class="businessNumber" placeholder="123-45-67890" required>
-                  </div>
-                  <div class="form-group">
-                    <label>공급가액 <span class="required">*</span></label>
-                    <input type="number" class="supplyAmount" placeholder="0" min="0" required>
-                  </div>
-                  <div class="form-group">
-                    <label>부가세 <span class="required">*</span></label>
-                    <input type="number" class="vatAmount" placeholder="0" min="0" required>
-                  </div>
-                  <div class="form-group">
-                    <label>합계금액 <span class="required">*</span></label>
-                    <input type="number" class="totalAmount" placeholder="0" min="0" required>
-                  </div>
-                  <div class="form-group">
-                    <label>발행일 <span class="required">*</span></label>
-                    <input type="date" class="issueDate" required>
-                  </div>
-                  <div class="form-group">
-                    <label>계정과목 <span class="required">*</span></label>
-                    <select class="accountName" required>
-                      <option value="">-- 선택 --</option>
-                      <option value="용역비">용역비</option>
-                      <option value="광고비">광고비</option>
-                      <option value="외주비">외주비</option>
-                      <option value="회의비">회의비</option>
-                      <option value="기타">기타</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>비고</label>
-                    <input type="text" class="memo" placeholder="추가 정보 입력">
-                  </div>
+                <div class="form-group">
+                  <label>부서 <span class="required">*</span></label>
+                  <select class="inputPersonDepartment" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="영업전략부">영업전략부</option>
+                    <option value="국내영업부">국내영업부</option>
+                    <option value="해외영업부">해외영업부</option>
+                    <option value="전략기획부">전략기획부</option>
+                    <option value="개발부">개발부</option>
+                    <option value="QA부">QA부</option>
+                    <option value="운영부">운영부</option>
+                    <option value="디지털마케팅부">디지털마케팅부</option>
+                    <option value="브랜드마케팅부">브랜드마케팅부</option>
+                    <option value="경영관리부">경영관리부</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>담당자명 <span class="required">*</span></label>
+                  <input type="text" class="inputPersonName" placeholder="예: 김철수" required>
+                </div>
+                <div class="form-group">
+                  <label>이메일 <span class="required">*</span></label>
+                  <input type="email" class="inputPersonEmail" placeholder="example@company.com" required>
+                </div>
+                <div class="form-group">
+                  <label>연락처</label>
+                  <input type="tel" class="inputPersonPhone" placeholder="010-1234-5678">
+                </div>
+                <div class="form-group">
+                  <label>직책</label>
+                  <select class="inputPersonRole">
+                    <option value="">-- 선택 --</option>
+                    <option value="대리">대리</option>
+                    <option value="과장">과장</option>
+                    <option value="팀장">팀장</option>
+                    <option value="부장">부장</option>
+                    <option value="직원">직원</option>
+                  </select>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Upload Section -->
-        <div style="background-color: var(--color-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">📄 파일 업로드</h3>
-          <div class="upload-zone" id="uploadZone">
-            <div class="upload-icon">⬆️</div>
-            <div class="upload-text">
-              <strong>파일을 드래그하거나 클릭하여 업로드</strong>
-              <span>CSV, Excel, 이미지(JPG, PNG) 파일 지원</span>
+            <!-- 세금계산서 정보 -->
+            <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">📄 세금계산서 정보</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>거래유형 <span class="required">*</span></label>
+                  <select class="transactionType" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="매출">매출</option>
+                    <option value="매입">매입</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>공급자명 <span class="required">*</span></label>
+                  <input type="text" class="supplierName" placeholder="예: 홍길동 용역비" required>
+                </div>
+                <div class="form-group">
+                  <label>품목명 <span class="required">*</span></label>
+                  <input type="text" class="itemName" placeholder="예: 용역료, 광고 제작료" required>
+                </div>
+                <div class="form-group">
+                  <label>사업자번호 <span class="required">*</span></label>
+                  <input type="text" class="businessNumber" placeholder="123-45-67890" required>
+                </div>
+                <div class="form-group">
+                  <label>공급가액 <span class="required">*</span></label>
+                  <input type="number" class="supplyAmount" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label>부가세 <span class="required">*</span></label>
+                  <input type="number" class="vatAmount" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label>합계금액 <span class="required">*</span></label>
+                  <input type="number" class="totalAmount" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label>발행일 <span class="required">*</span></label>
+                  <input type="date" class="issueDate" required>
+                </div>
+                <div class="form-group">
+                  <label>계정과목 <span class="required">*</span></label>
+                  <select class="accountName" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="용역비">용역비</option>
+                    <option value="광고비">광고비</option>
+                    <option value="외주비">외주비</option>
+                    <option value="회의비">회의비</option>
+                    <option value="기타">기타</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>비고</label>
+                  <input type="text" class="memo" placeholder="추가 정보 입력">
+                </div>
+              </div>
+            </div>
+
+            <!-- 파일 업로드 -->
+            <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">📄 파일 업로드</h4>
+              <div class="upload-zone set-upload-zone">
+                <div class="upload-icon">⬆️</div>
+                <div class="upload-text">
+                  <strong>파일을 드래그하거나 클릭하여 업로드</strong>
+                  <span>CSV, Excel, 이미지(JPG, PNG) 파일 지원</span>
+                </div>
+              </div>
+              <input type="file" class="set-file-input" accept=".csv,.xlsx,.xls,.jpg,.jpeg,.png,.gif,.webp" style="display: none;">
             </div>
           </div>
-          <input type="file" id="fileInput" accept=".csv,.xlsx,.xls,.jpg,.jpeg,.png,.gif,.webp">
         </div>
 
         <div class="form-actions">
@@ -1840,24 +1840,23 @@
 
     function resetForm() {
       document.getElementById('invoiceForm').reset();
-      document.getElementById('issueDate').valueAsDate = new Date();
 
-      // 모든 세금계산서 폼 초기화
-      const invoiceFormGroups = document.querySelectorAll('.invoice-form-group');
-      invoiceFormGroups.forEach(group => {
-        const issueDate = group.querySelector('.issueDate');
+      // 모든 세트의 발행일을 오늘 날짜로 설정
+      const sets = document.querySelectorAll('.registration-set');
+      sets.forEach(set => {
+        const issueDate = set.querySelector('.issueDate');
         if (issueDate) {
           issueDate.valueAsDate = new Date();
         }
       });
 
-      // 첫 번째 폼만 남기고 나머지 삭제
-      const container = document.getElementById('invoiceFormsContainer');
-      if (invoiceFormGroups.length > 1) {
-        for (let i = 1; i < invoiceFormGroups.length; i++) {
-          invoiceFormGroups[i].remove();
+      // 첫 번째 세트만 남기고 나머지 삭제
+      const container = document.getElementById('registrationSetsContainer');
+      if (sets.length > 1) {
+        for (let i = 1; i < sets.length; i++) {
+          sets[i].remove();
         }
-        updateRemoveButtons();
+        updateSetNumbers();
       }
     }
 
@@ -1870,21 +1869,85 @@
       showAlert('세금계산서가 삭제되었습니다', 'success');
     }
 
-    // Dynamic Invoice Form Management
-    function addInvoiceForm() {
-      const container = document.getElementById('invoiceFormsContainer');
-      const formCount = container.querySelectorAll('.invoice-form-group').length;
-      const newIndex = formCount;
+    // Dynamic Registration Set Management
+    function addRegistrationSet() {
+      const container = document.getElementById('registrationSetsContainer');
+      const setCount = container.querySelectorAll('.registration-set').length;
+      const newIndex = setCount;
 
-      const newForm = document.createElement('div');
-      newForm.className = 'invoice-form-group';
-      newForm.setAttribute('data-invoice-index', newIndex);
-      newForm.innerHTML = `
-        <div style="background-color: var(--color-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; position: relative;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <span style="font-weight: 600; color: var(--color-text);">세금계산서 #${newIndex + 1}</span>
-            <button type="button" class="btn-secondary remove-invoice-btn" onclick="removeInvoiceForm(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">✕ 삭제</button>
+      const newSet = document.createElement('div');
+      newSet.className = 'registration-set';
+      newSet.setAttribute('data-set-index', newIndex);
+      newSet.style.cssText = 'background-color: var(--color-bg); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--color-border); position: relative;';
+      newSet.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0;">세트 #${newIndex + 1}</h3>
+          <button type="button" class="btn-secondary remove-set-btn" onclick="removeRegistrationSet(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">✕ 삭제</button>
+        </div>
+
+        <!-- 입력자 정보 -->
+        <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">👤 입력자 정보</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>팀명 <span class="required">*</span></label>
+              <select class="inputPersonTeam" required>
+                <option value="">-- 선택 --</option>
+                <option value="영업팀">영업팀</option>
+                <option value="개발팀">개발팀</option>
+                <option value="마케팅팀">마케팅팀</option>
+                <option value="운영팀">운영팀</option>
+                <option value="기획팀">기획팀</option>
+                <option value="인사팀">인사팀</option>
+                <option value="재무팀">재무팀</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>부서 <span class="required">*</span></label>
+              <select class="inputPersonDepartment" required>
+                <option value="">-- 선택 --</option>
+                <option value="영업전략부">영업전략부</option>
+                <option value="국내영업부">국내영업부</option>
+                <option value="해외영업부">해외영업부</option>
+                <option value="전략기획부">전략기획부</option>
+                <option value="개발부">개발부</option>
+                <option value="QA부">QA부</option>
+                <option value="운영부">운영부</option>
+                <option value="디지털마케팅부">디지털마케팅부</option>
+                <option value="브랜드마케팅부">브랜드마케팅부</option>
+                <option value="경영관리부">경영관리부</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>담당자명 <span class="required">*</span></label>
+              <input type="text" class="inputPersonName" placeholder="예: 김철수" required>
+            </div>
+            <div class="form-group">
+              <label>이메일 <span class="required">*</span></label>
+              <input type="email" class="inputPersonEmail" placeholder="example@company.com" required>
+            </div>
+            <div class="form-group">
+              <label>연락처</label>
+              <input type="tel" class="inputPersonPhone" placeholder="010-1234-5678">
+            </div>
+            <div class="form-group">
+              <label>직책</label>
+              <select class="inputPersonRole">
+                <option value="">-- 선택 --</option>
+                <option value="대리">대리</option>
+                <option value="과장">과장</option>
+                <option value="팀장">팀장</option>
+                <option value="부장">부장</option>
+                <option value="직원">직원</option>
+              </select>
+            </div>
           </div>
+        </div>
+
+        <!-- 세금계산서 정보 -->
+        <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">📄 세금계산서 정보</h4>
           <div class="form-grid">
             <div class="form-group">
               <label>거래유형 <span class="required">*</span></label>
@@ -1939,40 +2002,121 @@
             </div>
           </div>
         </div>
+
+        <!-- 파일 업로드 -->
+        <div style="background-color: var(--color-white); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--color-border);">
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">📄 파일 업로드</h4>
+          <div class="upload-zone set-upload-zone">
+            <div class="upload-icon">⬆️</div>
+            <div class="upload-text">
+              <strong>파일을 드래그하거나 클릭하여 업로드</strong>
+              <span>CSV, Excel, 이미지(JPG, PNG) 파일 지원</span>
+            </div>
+          </div>
+          <input type="file" class="set-file-input" accept=".csv,.xlsx,.xls,.jpg,.jpeg,.png,.gif,.webp" style="display: none;">
+        </div>
       `;
 
-      container.appendChild(newForm);
-      updateRemoveButtons();
+      container.appendChild(newSet);
+      updateSetNumbers();
+      attachUploadHandlers(newSet);
     }
 
-    function removeInvoiceForm(button) {
-      const container = document.getElementById('invoiceFormsContainer');
-      const formGroup = button.closest('.invoice-form-group');
+    function removeRegistrationSet(button) {
+      const container = document.getElementById('registrationSetsContainer');
+      const set = button.closest('.registration-set');
 
-      if (container.querySelectorAll('.invoice-form-group').length > 1) {
-        formGroup.remove();
-        updateRemoveButtons();
+      if (container.querySelectorAll('.registration-set').length > 1) {
+        set.remove();
+        updateSetNumbers();
       } else {
-        showAlert('최소한 하나의 세금계산서는 남아있어야 합니다', 'error');
+        showAlert('최소한 하나의 등록 세트는 남아있어야 합니다', 'error');
       }
     }
 
-    function updateRemoveButtons() {
-      const container = document.getElementById('invoiceFormsContainer');
-      const formGroups = container.querySelectorAll('.invoice-form-group');
-      const removeButtons = container.querySelectorAll('.remove-invoice-btn');
-
-      removeButtons.forEach((btn, idx) => {
-        btn.style.display = formGroups.length > 1 ? 'block' : 'none';
-      });
-
-      // 세금계산서 번호 업데이트
-      formGroups.forEach((group, idx) => {
-        const title = group.querySelector('span:first-child');
+    function updateSetNumbers() {
+      const sets = document.querySelectorAll('.registration-set');
+      sets.forEach((set, idx) => {
+        const title = set.querySelector('h3');
         if (title) {
-          title.textContent = `세금계산서 #${idx + 1}`;
+          title.textContent = `세트 #${idx + 1}`;
         }
       });
+    }
+
+    function attachUploadHandlers(container) {
+      const uploadZone = container.querySelector('.set-upload-zone');
+      const fileInput = container.querySelector('.set-file-input');
+
+      uploadZone.addEventListener('click', () => fileInput.click());
+
+      uploadZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadZone.style.backgroundColor = 'rgba(222, 10, 49, 0.04)';
+        uploadZone.style.borderColor = 'var(--color-primary)';
+      });
+
+      uploadZone.addEventListener('dragleave', () => {
+        uploadZone.style.backgroundColor = '';
+        uploadZone.style.borderColor = '';
+      });
+
+      uploadZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadZone.style.backgroundColor = '';
+        uploadZone.style.borderColor = '';
+        handleSetFiles(e.dataTransfer.files, container);
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        handleSetFiles(e.target.files, container);
+      });
+    }
+
+    // Handle file upload for each set
+    function handleSetFiles(files, container) {
+      if (files.length === 0) return;
+      const file = files[0];
+
+      if (file.type.startsWith('image/')) {
+        showAlert(`이미지 파일(${file.name})이 업로드되었습니다. 세금계산서 사진으로 저장되었습니다.`, 'success');
+      } else if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const csv = e.target.result;
+            const lines = csv.split('\n');
+            const firstLine = lines[1];
+
+            if (!firstLine || !firstLine.trim()) {
+              showAlert('CSV 파일에 데이터가 없습니다', 'error');
+              return;
+            }
+
+            const [transactionType, supplier, businessNumber, itemName, supply, vat, total, date, account] = firstLine.split(',').map(v => v.trim());
+
+            if (supplier && businessNumber && transactionType && itemName) {
+              const set = container.closest('.registration-set');
+              set.querySelector('.supplierName').value = supplier;
+              set.querySelector('.businessNumber').value = businessNumber;
+              set.querySelector('.itemName').value = itemName;
+              set.querySelector('.supplyAmount').value = supply;
+              set.querySelector('.vatAmount').value = vat;
+              set.querySelector('.totalAmount').value = total;
+              set.querySelector('.issueDate').value = date || new Date().toISOString().split('T')[0];
+              set.querySelector('.accountName').value = account || '기타';
+              set.querySelector('.transactionType').value = transactionType;
+
+              showAlert(`CSV 파일의 첫 번째 행 데이터를 자동 입력했습니다`, 'success');
+            }
+          } catch (err) {
+            showAlert('파일 처리 중 오류가 발생했습니다', 'error');
+          }
+        };
+        reader.readAsText(file);
+      } else {
+        showAlert('CSV 또는 이미지 파일만 지원합니다', 'error');
+      }
     }
 
     // Form Handling
@@ -1981,36 +2125,34 @@
 
       const teamSelectElement = document.getElementById('teamSelect');
       const teamId = teamSelectElement ? teamSelectElement.value : CURRENT_TEAM;
-
-      const inputPersonTeam = document.getElementById('inputPersonTeam').value;
-      const inputPersonDepartment = document.getElementById('inputPersonDepartment').value;
-      const inputPersonName = document.getElementById('inputPersonName').value;
-      const inputPersonEmail = document.getElementById('inputPersonEmail').value;
-
-      if (!inputPersonTeam || !inputPersonDepartment || !inputPersonName || !inputPersonEmail) {
-        showAlert('팀명, 부서, 담당자명, 이메일은 필수입니다', 'error');
-        return;
-      }
-
-      // 모든 세금계산서 폼 수집
-      const invoiceFormGroups = document.querySelectorAll('.invoice-form-group');
+      const sets = document.querySelectorAll('.registration-set');
       const invoices = [];
 
-      for (let formGroup of invoiceFormGroups) {
-        const supply = parseInt(formGroup.querySelector('.supplyAmount').value) || 0;
-        const vat = parseInt(formGroup.querySelector('.vatAmount').value) || 0;
-        const total = parseInt(formGroup.querySelector('.totalAmount').value) || 0;
+      for (let set of sets) {
+        const inputPersonTeam = set.querySelector('.inputPersonTeam').value;
+        const inputPersonDepartment = set.querySelector('.inputPersonDepartment').value;
+        const inputPersonName = set.querySelector('.inputPersonName').value;
+        const inputPersonEmail = set.querySelector('.inputPersonEmail').value;
 
-        if (supply + vat !== total) {
-          showAlert('합계금액이 공급가액 + 부가세와 맞지 않습니다', 'error');
+        if (!inputPersonTeam || !inputPersonDepartment || !inputPersonName || !inputPersonEmail) {
+          showAlert('각 세트의 팀명, 부서, 담당자명, 이메일은 필수입니다', 'error');
           return;
         }
 
-        const transactionType = formGroup.querySelector('.transactionType').value;
-        const itemName = formGroup.querySelector('.itemName').value;
+        const supply = parseInt(set.querySelector('.supplyAmount').value) || 0;
+        const vat = parseInt(set.querySelector('.vatAmount').value) || 0;
+        const total = parseInt(set.querySelector('.totalAmount').value) || 0;
+
+        if (supply + vat !== total) {
+          showAlert('각 세트의 합계금액이 공급가액 + 부가세와 맞지 않습니다', 'error');
+          return;
+        }
+
+        const transactionType = set.querySelector('.transactionType').value;
+        const itemName = set.querySelector('.itemName').value;
 
         if (!transactionType || !itemName) {
-          showAlert('거래유형과 품목명은 필수입니다', 'error');
+          showAlert('각 세트의 거래유형과 품목명은 필수입니다', 'error');
           return;
         }
 
@@ -2018,22 +2160,22 @@
           id: Date.now().toString() + Math.random(),
           team: teamId,
           transactionType: transactionType,
-          supplier: formGroup.querySelector('.supplierName').value,
+          supplier: set.querySelector('.supplierName').value,
           itemName: itemName,
-          businessNumber: formGroup.querySelector('.businessNumber').value,
+          businessNumber: set.querySelector('.businessNumber').value,
           supply: supply,
           vat: vat,
           total: total,
-          date: formGroup.querySelector('.issueDate').value,
-          account: formGroup.querySelector('.accountName').value,
-          memo: formGroup.querySelector('.memo').value,
+          date: set.querySelector('.issueDate').value,
+          account: set.querySelector('.accountName').value,
+          memo: set.querySelector('.memo').value,
           status: 'pending',
           inputPersonTeam: inputPersonTeam,
           inputPersonDepartment: inputPersonDepartment,
           inputPersonName: inputPersonName,
           inputPersonEmail: inputPersonEmail,
-          inputPersonPhone: document.getElementById('inputPersonPhone').value,
-          inputPersonRole: document.getElementById('inputPersonRole').value,
+          inputPersonPhone: set.querySelector('.inputPersonPhone').value,
+          inputPersonRole: set.querySelector('.inputPersonRole').value,
           createdAt: new Date().toISOString()
         };
 
@@ -2058,98 +2200,9 @@
       document.querySelector('.filter-btn-transaction').classList.add('active');
 
       updateInvoiceList();
-      showAlert(`${inputPersonName} 담당자의 ${invoices.length}개 세금계산서가 등록되었습니다`, 'success');
+      showAlert(`${invoices.length}개 세트의 세금계산서(총 ${invoices.length}건)가 등록되었습니다`, 'success');
     });
 
-    // Upload Handling
-    const uploadZone = document.getElementById('uploadZone');
-    const fileInput = document.getElementById('fileInput');
-
-    uploadZone.addEventListener('click', () => fileInput.click());
-
-    uploadZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      document.getElementById('uploadSection').classList.add('drag-over');
-    });
-
-    uploadZone.addEventListener('dragleave', () => {
-      document.getElementById('uploadSection').classList.remove('drag-over');
-    });
-
-    uploadZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      document.getElementById('uploadSection').classList.remove('drag-over');
-      handleFiles(e.dataTransfer.files);
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      handleFiles(e.target.files);
-    });
-
-    function handleFiles(files) {
-      if (files.length === 0) return;
-      const file = files[0];
-
-      if (file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          showAlert(`이미지 파일(${file.name})이 업로드되었습니다. 세금계산서 사진으로 저장되었습니다.`, 'success');
-          fileInput.value = '';
-        };
-        reader.readAsDataURL(file);
-      } else if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          try {
-            const csv = e.target.result;
-            const lines = csv.split('\n');
-            let imported = 0;
-
-            for (let i = 1; i < lines.length; i++) {
-              if (!lines[i].trim()) continue;
-
-              const [transactionType, supplier, businessNumber, itemName, supply, vat, total, date, account] = lines[i].split(',').map(v => v.trim());
-
-              if (supplier && businessNumber && transactionType && itemName) {
-                const teamSelectElement = document.getElementById('teamSelect');
-                const teamId = teamSelectElement ? teamSelectElement.value : CURRENT_TEAM;
-                const invoice = {
-                  id: Date.now().toString() + i,
-                  transactionType: transactionType,
-                  itemName: itemName,
-                  team: teamId,
-                  supplier: supplier,
-                  businessNumber: businessNumber,
-                  supply: parseInt(supply) || 0,
-                  vat: parseInt(vat) || 0,
-                  total: parseInt(total) || 0,
-                  date: date || new Date().toISOString().split('T')[0],
-                  account: account || '기타',
-                  memo: '',
-                  status: 'pending',
-                  createdAt: new Date().toISOString()
-                };
-
-                const invoices = getInvoices();
-                invoices.push(invoice);
-                saveInvoices(invoices);
-                imported++;
-              }
-            }
-
-            currentPage = 1;
-            updateInvoiceList();
-            showAlert(`${imported}개의 세금계산서를 가져왔습니다`, 'success');
-            fileInput.value = '';
-          } catch (err) {
-            showAlert('파일 처리 중 오류가 발생했습니다', 'error');
-          }
-        };
-        reader.readAsText(file);
-      } else {
-        showAlert('CSV 또는 이미지 파일만 지원합니다', 'error');
-      }
-    }
 
     // Team Selection
 
@@ -2192,7 +2245,15 @@
 
     // Initialize
     function init() {
-      document.getElementById('issueDate').valueAsDate = new Date();
+      // 첫 번째 세트의 업로드 핸들러 초기화
+      const firstSet = document.querySelector('.registration-set');
+      if (firstSet) {
+        attachUploadHandlers(firstSet);
+        const issueDate = firstSet.querySelector('.issueDate');
+        if (issueDate) {
+          issueDate.valueAsDate = new Date();
+        }
+      }
 
       // === DATA MIGRATION: 기존 스키마 업그레이드 ===
       // localStorage에 저장된 기존 데이터를 새 스키마로 마이그레이션
