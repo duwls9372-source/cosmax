@@ -1343,9 +1343,9 @@
       <h2 style="margin-bottom: 2rem;">✏️ 세금계산서 등록</h2>
 
       <form id="invoiceForm">
-        <!-- 입력자 정보 (공통) -->
+        <!-- 입력자 정보 -->
         <div style="background-color: var(--color-bg); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--color-primary);">
-          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1.5rem;">👤 입력자 정보 (모든 세트 공통)</h3>
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin-bottom: 1.5rem;">👤 입력자 정보</h3>
           <div class="form-grid">
             <div class="form-group">
               <label for="commonInputPersonTeam">팀명 <span class="required">*</span></label>
@@ -1403,17 +1403,17 @@
           </div>
         </div>
 
-        <!-- 세금계산서 세트들 -->
+        <!-- 세금계산서 등록 -->
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; margin-top: 2rem;">
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-text); margin: 0;">📄 세금계산서 세트</h3>
-          <button type="button" class="btn-secondary" onclick="addRegistrationSet()" style="padding: 0.5rem 1rem; font-size: 0.875rem;">+ 세트 추가</button>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-text); margin: 0;">📄 세금계산서</h3>
+          <button type="button" class="btn-secondary" onclick="addRegistrationSet()" style="padding: 0.5rem 1rem; font-size: 0.875rem;">+ 추가</button>
         </div>
 
         <div id="registrationSetsContainer">
-          <!-- 첫 번째 세트 -->
+          <!-- 첫 번째 세금계산서 -->
           <div class="registration-set" data-set-index="0" style="background-color: var(--color-white); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin: 0;">세트 #1</h4>
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin: 0; opacity: 0.6;">#1</h4>
               <button type="button" class="btn-secondary remove-set-btn" onclick="removeRegistrationSet(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem; display: none;">✕ 삭제</button>
             </div>
 
@@ -1888,7 +1888,7 @@
       newSet.style.cssText = 'background-color: var(--color-white); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid var(--color-border);';
       newSet.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin: 0;">세트 #${newIndex + 1}</h4>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin: 0; opacity: 0.6;">#${newIndex + 1}</h4>
           <button type="button" class="btn-secondary remove-set-btn" onclick="removeRegistrationSet(this)" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;">✕ 삭제</button>
         </div>
 
@@ -1977,16 +1977,16 @@
         set.remove();
         updateSetNumbers();
       } else {
-        showAlert('최소한 하나의 등록 세트는 남아있어야 합니다', 'error');
+        showAlert('최소한 하나의 세금계산서는 남아있어야 합니다', 'error');
       }
     }
 
     function updateSetNumbers() {
       const sets = document.querySelectorAll('.registration-set');
       sets.forEach((set, idx) => {
-        const title = set.querySelector('h3');
+        const title = set.querySelector('h4');
         if (title) {
-          title.textContent = `세트 #${idx + 1}`;
+          title.textContent = `#${idx + 1}`;
         }
       });
     }
